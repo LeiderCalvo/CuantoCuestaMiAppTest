@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CuantoCuestaMiWeb</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        font-family: Helvetica, Arial, sans-serif;
+        transition: transform .35s ease;
+    }
+
+    html body {
+        width: 100%;
+    }
+
+    body {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+        background-color: #EFF5F9;
+    }
+
+    .header {
+        display: flex;
+        flex-direction: row;
+        width: 80%;
+        justify-content: space-between;
+    }
+
+    h1 {
+        margin: 70px 0 50px;
+    }
+
+    .options {
+        display: flex;
+        flex-direction: row;
+        width: 60%;
+        justify-content: space-between;
+    }
+
+    .option {
+        transform: translateY(0);
+    }
+
+    .option:hover {
+        background: rgba(255,255,255,.4);
+        cursor: pointer;
+        transform: translateY(-10px);
+    }
+
+    img {
+        width: 150px;
+    }
+
+    button {
+        margin-top: 50px;
+        background: none;
+        border: none;
+        box-shadow: none;
+        font-size: 1em;
+        font-weight: 700;
+    }
+
+    .comment {
+        margin-top: 70px;
+        width: 80%;
+        text-align: right;
+    }
+</style>
+<body>
+    <div class="header">
+        
+        <h4>step</h4>
+        <h4>precio</h4>
+    </div>
+    <h1>Pregunta</h1>
+    <div class="options">
+        <div class="option">
+            <img src="https://www.cuantocuestamiweb.com.co/img/web/answer-4-1.png" alt="img">
+            <p>Nombre</p>
+        </div>
+        <div class="option">
+            <img src="https://www.cuantocuestamiweb.com.co/img/web/answer-4-1.png" alt="img">
+            <p>Nombre</p>
+        </div>
+        <div class="option">
+            <img src="https://www.cuantocuestamiweb.com.co/img/web/answer-4-1.png" alt="img">
+            <p>Nombre</p>
+        </div>
+        <div class="option">
+            <img src="https://www.cuantocuestamiweb.com.co/img/web/answer-4-1.png" alt="img">
+            <p>Nombre</p>
+        </div>
+    </div>
+
+    <button class="anterior"> &#60-- anterior</button>
+    <h4 class="comment">Patrocinado por mi</h4>
+</body>
+</html>
