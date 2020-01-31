@@ -11,20 +11,32 @@
         margin: 0;
         font-family: Helvetica, Arial, sans-serif;
         transition: transform .35s ease;
+        color: #3d3935;
     }
 
     html body {
         width: 100%;
+        background-color: #EFF5F9;
     }
 
-    body {
+    .result {
+        display: none;
+        width: 100%;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+
+    .action {
+        width: 100%;
         text-align: center;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         margin-top: 50px;
-        background-color: #EFF5F9;
     }
 
     .header {
@@ -73,107 +85,170 @@
         width: 80%;
         text-align: right;
     }
+
+    .title {
+        font-size: 32px;
+        font-weight: 700;
+        margin-top: 50px;
+    }
+
+    .cost {
+        color: #7a56f4;
+        font-size: 80px;
+        font-weight: 700;
+        margin: 50px 0;
+    }
+
+    .message {
+        width: 80%;
+        font-weight: 300;
+        font-size: 16px;
+    }
+
+    .newProyect {
+        background-color: #7a56f4;
+        color: white;
+        font-size: 24px;
+        padding: 20px 40px;
+        border-radius: 20px;
+        margin: 0 0 50px 0;
+    }
 </style>
 <body>
-    <div class="header">
-        <h4 class="step">step</h4>
-        <h4>precio</h4>
-    </div>
+    <article class="action">
+        <div class="header">
+            <h4 class="step">step</h4>
+            <h4>precio</h4>
+        </div>
+    
+        <h1 class="question">Pregunta</h1>
+    
+        <div class="options">
+            <div class="option">
+                <img src="https://www.cuantocuestamiweb.com.co/img/web/answer-4-1.png" alt="img"class='img'>
+                <p class="option--name">Nombre2</p>
+            </div>
+            <div class="option">
+                <img src="https://www.cuantocuestamiweb.com.co/img/web/answer-4-1.png" alt="img"class='img'>
+                <p class="option--name">Nombre3</p>
+            </div>
+            <div class="option">
+                <img src="https://www.cuantocuestamiweb.com.co/img/web/answer-4-1.png" alt="img"class='img'>
+                <p class="option--name">Nombre4</p>
+            </div>
+            <div class="option">
+                <img src="https://www.cuantocuestamiweb.com.co/img/web/answer-4-1.png" alt="img"class='img'>
+                <p class="option--name">Nombre5</p>
+            </div>
+        </div>
+    
+        <button class="anterior"> &#60-- anterior</button>
+        <h4 class="comment">Patrocinado por mi</h4>
+    </article>
 
-    <h1 class="question">Pregunta</h1>
-
-    <div class="options">
-        <div class="option">
-            <img src="https://www.cuantocuestamiweb.com.co/img/web/answer-4-1.png" alt="img"class='img'>
-            <p class="option--name">Nombre2</p>
-        </div>
-        <div class="option">
-            <img src="https://www.cuantocuestamiweb.com.co/img/web/answer-4-1.png" alt="img"class='img'>
-            <p class="option--name">Nombre3</p>
-        </div>
-        <div class="option">
-            <img src="https://www.cuantocuestamiweb.com.co/img/web/answer-4-1.png" alt="img"class='img'>
-            <p class="option--name">Nombre4</p>
-        </div>
-        <div class="option">
-            <img src="https://www.cuantocuestamiweb.com.co/img/web/answer-4-1.png" alt="img"class='img'>
-            <p class="option--name">Nombre5</p>
-        </div>
-    </div>
-
-    <button class="anterior"> &#60-- anterior</button>
-    <h4 class="comment">Patrocinado por mi</h4>
+    <article class="result">
+        <p>¡Bien! ¡Hemos terminado!</p>
+        <h2 class="title">El costo estimado de tu web es</h2>
+        <h1 class="cost">$5'500,000 COP</h1>
+        <button class="newProyect"> Crea tu proyecto</button>
+        <p class="message">En Yeeply seleccionamos los mejores desarrolladores de apps y webs para tu proyecto. Publica tu proyecto en Yeeply o mira algunos de nuestros casos de éxito.</p>
+        <button class="restart"> &#60-- Volver a empezar</button>
+    </article>
 
     <script>
+    const quesionnaire = [
+        {
+            question: '¿Qué tipo de web estás buscando?',
+            options: ['E-commerce/Tienda online', 'Web con blog', 'Web para empresa/Corporativa', 'Web a medida']
+        },
+        {
+            question: '¿Qué diseño quieres que tenga tu Web?',
+            options: ['Usar una plantilla', 'Diseño a medida', 'No necesito el diseño', 'No lo sé']
+        },
+        {
+            question: '¿Cómo de grande necesitas que sea la web?',
+            options: ['Pequeña: menos de 3 páginas/50 productos', 'Mediana: menos de 10 páginas/200 productos', 'Grande: más de 10 páginas/200 productos', 'No lo sé']
+        },
+        {
+            question: '¿En tu web se van a realizar pagos?',
+            options: ['Sí', 'No', 'No lo sé', '']
+        },
+        {
+            question: '¿La Web estará integrada con otra Web, App o ERP?',
+            options: ['Sí', 'No', 'No lo sé', '']
+        },
+        {
+            question: '¿Tu Web necesita login o registro de usuarios?',
+            options: ['Sí', 'No', 'No lo sé', '']
+        },
+        {
+            question: '¿Va a ser una web multidioma?',
+            options: ['Sí', 'No', 'No lo sé', '']
+        },
+        {
+            question: '¿La Web necesita un directorio/buscador interno?',
+            options: ['Sí', 'No', 'No lo sé', '']
+        },
+        {
+            question: '¿Tu web necesita servicios de SEO?',
+            options: ['Sí', 'No', 'No lo sé', '']
+        },
+        {
+            question: '¿En qué estado se encuentra tu web?',
+            options: ['Solamente es una idea', 'Boceto preparado', 'Web en desarrollo', 'Web lanzada']
+        }
+    ]
         var step = 0,
             response = '',
             WebStep = document.querySelector('.step'),
             question = document.querySelector('.question'),
             imgs = document.querySelectorAll('.img'),
             options = document.querySelectorAll('.option'),
-            names = document.querySelectorAll('.option--name');
-        
-            const quesionnaire = [
-            {
-                question: '¿Qué tipo de web estás buscando?',
-                options: ['E-commerce/Tienda online', 'Web con blog', 'Web para empresa/Corporativa', 'Web a medida']
-            },
-            {
-                question: '¿Qué diseño quieres que tenga tu Web?',
-                options: ['Usar una plantilla', 'Diseño a medida', 'No necesito el diseño', 'No lo sé']
-            },
-            {
-                question: '¿Cómo de grande necesitas que sea la web?',
-                options: ['Pequeña: menos de 3 páginas/50 productos', 'Mediana: menos de 10 páginas/200 productos', 'Grande: más de 10 páginas/200 productos', 'No lo sé']
-            },
-            {
-                question: '¿En tu web se van a realizar pagos?',
-                options: ['Sí', 'No', 'No lo sé', '']
-            },
-            {
-                question: '¿La Web estará integrada con otra Web, App o ERP?',
-                options: ['Sí', 'No', 'No lo sé', '']
-            },
-            {
-                question: '¿Tu Web necesita login o registro de usuarios?',
-                options: ['Sí', 'No', 'No lo sé', '']
-            },
-            {
-                question: '¿Va a ser una web multidioma?',
-                options: ['Sí', 'No', 'No lo sé', '']
-            },
-            {
-                question: '¿La Web necesita un directorio/buscador interno?',
-                options: ['Sí', 'No', 'No lo sé', '']
-            },
-            {
-                question: '¿Tu web necesita servicios de SEO?',
-                options: ['Sí', 'No', 'No lo sé', '']
-            },
-            {
-                question: '¿En qué estado se encuentra tu web?',
-                options: ['Solamente es una idea', 'Boceto preparado', 'Web en desarrollo', 'Web lanzada']
-            }
-        ]
+            names = document.querySelectorAll('.option--name'),
+            btnPrevious = document.querySelector('.anterior'),
 
-        goToNewQuestion();
+            action = document.querySelector('.action'),
+            result = document.querySelector('.result'),
+
+            restart = document.querySelector('.restart');
+
+        updateInfo();
 
         options.forEach((option, i) =>
             option.addEventListener('click', ()=> {
                 response += names[i].innerHTML + ',';
-                goToNewQuestion();
+                move(1);
             })
         )
+        
+        function move(number) {
+            if(step+number<0){
+                return;
+            }else if(step+number === 10){
+                action.style.display = 'none';
+                result.style.display = 'flex';
+            }else{
+                step += number;
+                updateInfo();
+            }
+        }
 
-        function goToNewQuestion () {
+        function updateInfo () {
             question.innerHTML = quesionnaire[step].question;
             WebStep.innerHTML = (step + 1) + '/10'
             quesionnaire[step].options.forEach((option, i) => {
                 option === '' ? options[i].style.display = 'none' : options[i].style.display = 'block';
                 names[i].innerHTML = option
             });
-            step+=1;
         }
+
+        btnPrevious.onclick = ()=> move(-1);
+        restart.onclick = ()=> {
+            result.style.display = 'none';
+            action.style.display = 'flex';
+            step = 0;
+            updateInfo();
+        };
 
     </script>
 </body>
