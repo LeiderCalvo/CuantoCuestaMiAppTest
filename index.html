@@ -76,31 +76,105 @@
 </style>
 <body>
     <div class="header">
-        
-        <h4>step</h4>
+        <h4 class="step">step</h4>
         <h4>precio</h4>
     </div>
-    <h1>Pregunta</h1>
+
+    <h1 class="question">Pregunta</h1>
+
     <div class="options">
         <div class="option">
-            <img src="https://www.cuantocuestamiweb.com.co/img/web/answer-4-1.png" alt="img">
-            <p>Nombre</p>
+            <img src="https://www.cuantocuestamiweb.com.co/img/web/answer-4-1.png" alt="img"class='img'>
+            <p class="option--name">Nombre2</p>
         </div>
         <div class="option">
-            <img src="https://www.cuantocuestamiweb.com.co/img/web/answer-4-1.png" alt="img">
-            <p>Nombre</p>
+            <img src="https://www.cuantocuestamiweb.com.co/img/web/answer-4-1.png" alt="img"class='img'>
+            <p class="option--name">Nombre3</p>
         </div>
         <div class="option">
-            <img src="https://www.cuantocuestamiweb.com.co/img/web/answer-4-1.png" alt="img">
-            <p>Nombre</p>
+            <img src="https://www.cuantocuestamiweb.com.co/img/web/answer-4-1.png" alt="img"class='img'>
+            <p class="option--name">Nombre4</p>
         </div>
         <div class="option">
-            <img src="https://www.cuantocuestamiweb.com.co/img/web/answer-4-1.png" alt="img">
-            <p>Nombre</p>
+            <img src="https://www.cuantocuestamiweb.com.co/img/web/answer-4-1.png" alt="img"class='img'>
+            <p class="option--name">Nombre5</p>
         </div>
     </div>
 
     <button class="anterior"> &#60-- anterior</button>
     <h4 class="comment">Patrocinado por mi</h4>
+
+    <script>
+        var step = 0,
+            response = '',
+            WebStep = document.querySelector('.step'),
+            question = document.querySelector('.question'),
+            imgs = document.querySelectorAll('.img'),
+            options = document.querySelectorAll('.option'),
+            names = document.querySelectorAll('.option--name');
+        
+            const quesionnaire = [
+            {
+                question: '¿Qué tipo de web estás buscando?',
+                options: ['E-commerce/Tienda online', 'Web con blog', 'Web para empresa/Corporativa', 'Web a medida']
+            },
+            {
+                question: '¿Qué diseño quieres que tenga tu Web?',
+                options: ['Usar una plantilla', 'Diseño a medida', 'No necesito el diseño', 'No lo sé']
+            },
+            {
+                question: '¿Cómo de grande necesitas que sea la web?',
+                options: ['Pequeña: menos de 3 páginas/50 productos', 'Mediana: menos de 10 páginas/200 productos', 'Grande: más de 10 páginas/200 productos', 'No lo sé']
+            },
+            {
+                question: '¿En tu web se van a realizar pagos?',
+                options: ['Sí', 'No', 'No lo sé', '']
+            },
+            {
+                question: '¿La Web estará integrada con otra Web, App o ERP?',
+                options: ['Sí', 'No', 'No lo sé', '']
+            },
+            {
+                question: '¿Tu Web necesita login o registro de usuarios?',
+                options: ['Sí', 'No', 'No lo sé', '']
+            },
+            {
+                question: '¿Va a ser una web multidioma?',
+                options: ['Sí', 'No', 'No lo sé', '']
+            },
+            {
+                question: '¿La Web necesita un directorio/buscador interno?',
+                options: ['Sí', 'No', 'No lo sé', '']
+            },
+            {
+                question: '¿Tu web necesita servicios de SEO?',
+                options: ['Sí', 'No', 'No lo sé', '']
+            },
+            {
+                question: '¿En qué estado se encuentra tu web?',
+                options: ['Solamente es una idea', 'Boceto preparado', 'Web en desarrollo', 'Web lanzada']
+            }
+        ]
+
+        goToNewQuestion();
+
+        options.forEach((option, i) =>
+            option.addEventListener('click', ()=> {
+                response += names[i].innerHTML + ',';
+                goToNewQuestion();
+            })
+        )
+
+        function goToNewQuestion () {
+            question.innerHTML = quesionnaire[step].question;
+            WebStep.innerHTML = (step + 1) + '/10'
+            quesionnaire[step].options.forEach((option, i) => {
+                option === '' ? options[i].style.display = 'none' : options[i].style.display = 'block';
+                names[i].innerHTML = option
+            });
+            step+=1;
+        }
+
+    </script>
 </body>
 </html>
