@@ -5,60 +5,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CuantoCuestaMiWeb</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
 </head>
 <style>
+    /* General */
     *{
         margin: 0;
-        font-family: Helvetica, Arial, sans-serif;
+        font-family: 'Poppins', sans-serif;
         transition: transform .35s ease;
         color: #3d3935;
+    }
+
+    button {
+        background: #7C33FF;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        font-size: 1em;
+        padding: 10px;
+        width: 15%;
+        cursor: pointer;
     }
 
     html body {
         width: 100%;
         background-color: #EFF5F9;
+        text-align: center;
     }
 
-    .result {
-        display: none;
+    article {
         width: 100%;
         text-align: center;
+        display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 50px;
+        margin-top: 40px;
     }
+
+    /* Landing */
+
+    .landing {
+        margin-top: 90px;
+    }
+
+    .landing img {
+        width: 250px;
+    }
+
+    .landing p {
+        width: 40%;
+    }
+
+    .landing .row{
+        margin-top: 50px;
+        width: 40%;
+    }
+
+    .landing .row button{
+        width: 40%;
+        border-radius: 0 15px 15px 0;
+    }
+
+    .landing .row input{
+        width: 60%;
+    }
+
+    .error {
+        border-color: red;
+    }
+
+    /* Cuestionario action */
 
     .action {
-        width: 100%;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-top: 50px;
+        display: none;
+        margin-top: 40px;
     }
 
-    .header {
-        display: flex;
-        flex-direction: row;
-        width: 80%;
-        justify-content: space-between;
-    }
-
-    h1 {
+    .question {
         margin: 70px 0 50px;
+        font-weight: 600;
     }
 
     .options {
         display: flex;
         flex-direction: row;
-        width: 60%;
+        width: 70%;
         justify-content: space-between;
     }
 
     .option {
         transform: translateY(0);
+        padding: 10px;
     }
 
     .option:hover {
@@ -67,60 +105,131 @@
         transform: translateY(-10px);
     }
 
+    .selected {
+        background: rgba(255,255,255,.4);
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        cursor: pointer;
+        transform: translateY(-10px);
+    }
+
     img {
         width: 150px;
     }
 
-    button {
-        margin-top: 50px;
-        background: none;
-        border: none;
-        box-shadow: none;
-        font-size: 1em;
-        font-weight: 700;
+    .btns {
+        margin: 50px 0;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
     }
 
-    .comment {
-        margin-top: 70px;
-        width: 80%;
-        text-align: right;
+    /* pantalla final */
+
+    .result {
+        display: none;
+        margin-top: 20px;
     }
 
     .title {
         font-size: 32px;
         font-weight: 700;
-        margin-top: 50px;
+        margin-top: 20px;
+        width: 50%;
+        text-align: left;
     }
 
-    .cost {
-        color: #7a56f4;
-        font-size: 80px;
-        font-weight: 700;
-        margin: 50px 0;
+    .row {
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .row p {
+        text-align: left;
+        width: 60%;
+    }
+
+    .row img {
+        width: 180px;
     }
 
     .message {
-        width: 80%;
+        width: 50%;
         font-weight: 300;
         font-size: 16px;
     }
 
     .newProyect {
-        background-color: #7a56f4;
+        font-size: 1.2em;
+        width: 20%;
+        margin: 20px 0;
+    }
+
+    .message2 {
+        margin-top: 20px;
+    }
+
+    .message2 strong {
+        color: #7C33FF;
+    }
+
+    .redes {
+        margin-top: 20px;
+    }
+
+    .row div {
+        width: 22%;
+        border-radius: 5px;
+        padding: 5px 0;
         color: white;
-        font-size: 24px;
-        padding: 20px 40px;
-        border-radius: 20px;
-        margin: 0 0 50px 0;
+        cursor: pointer;
+    }
+
+    .row div img {
+        width: auto;
+    }
+
+    .row .facebook {
+        background-color: #3B5998;
+    }
+
+    .row .linkedin {
+        background-color: #007BB6;
+    }
+
+    .row .google {
+        background-color: #DD4B39;
+    }
+
+    .row .tweeter {
+        background-color: #00ACED;
+    }
+
+    /* botón que reinicia la aplicación */
+
+    .restart {
+        background: none;
+        color: #3d3935;
+        font-weight: 600;
+        display: none;
     }
 </style>
+
 <body>
-    <article class="action">
-        <div class="header">
-            <h4 class="step">step</h4>
-            <h4>precio</h4>
+    <article class="landing">
+        <h1>¿Qué paquete necesito para mi sitio web y cuánto cuesta?</h1>
+        <img src="https://www.cuantocuestamiweb.com.co/img/web/answer-4-1.png" alt="img"class='img'>
+        <p><strong>estos sencillos pasos, encuentra el paquete indicado para hacer realidad tu página web, y recibe por correo una cotización aproximada a la medida de tus necesidades.</strong></p>
+        <div class="row">
+            <input type="text" placeholder="      Ingresa aquí tu email" id="email">
+            <button class="btnEmail">Empezar</button>
         </div>
-    
+    </article>
+
+    <article class="action">
+        <h4 class="step">step</h4>
         <h1 class="question">Pregunta</h1>
     
         <div class="options">
@@ -141,19 +250,35 @@
                 <p class="option--name">Nombre5</p>
             </div>
         </div>
-    
-        <button class="anterior"> &#60-- anterior</button>
-        <h4 class="comment">Patrocinado por mi</h4>
+        
+        <div class="btns">
+            <button class="back">Atrás</button>
+            <button class="next">Siguiente</button>
+        </div>
     </article>
 
     <article class="result">
-        <p>¡Bien! ¡Hemos terminado!</p>
-        <h2 class="title">El costo estimado de tu web es</h2>
-        <h1 class="cost">$5'500,000 COP</h1>
-        <button class="newProyect"> Crea tu proyecto</button>
-        <p class="message">En Yeeply seleccionamos los mejores desarrolladores de apps y webs para tu proyecto. Publica tu proyecto en Yeeply o mira algunos de nuestros casos de éxito.</p>
-        <button class="restart"> &#60-- Volver a empezar</button>
+        <p><strong>¡Todo listo, Hemos terminado!<br/>El paquete recomendado para tu sitio web es:</strong></p>
+        <h2 class="title">Basic plan</h2>
+        <div class="row">
+            <img src="https://www.cuantocuestamiweb.com.co/img/web/answer-4-1.png" alt="img"class='img'>
+            <p>El plan básico comprende sitios web sencillos de tipo informativo, que no tienen tienen tiendas virtuales, mùltiples idiomas, ni características avanzadas a la medida.<br/>Si quieres más características, considera alguno de los paquetes superiores</p>
+        </div>
+        <p class="message">Recibirás por correo una cotización a la medida de tus respuestas, y podrás ponerte en contacto con nuestro equipo si tienes dudas</p>
+        <button class="newProyect">Iniciar mi sitio web</button>
+        <p><strong>¿Algún amigo estaría interesado?<br/>Ayúdanos compartiendo!</strong></p>
+
+        <div class="redes row">
+            <div class="facebook"><img src="facebook.png" alt="img"class='img'> Share</div>
+            <div class="linkedin"><img src="linkedin.png" alt="img"class='img'> Share</div>
+            <div class="google"><img src="google.png" alt="img"class='img'> Google+</div>
+            <div class="tweeter"><img src="tweeter.png" alt="img"class='img'> Tweet</div>
+        </div>
+
+        <p class="message2"><strong>Contáctanos</strong> sobre tu proyecto o <strong>mira algunos de nuestros casos de éxito.</strong></p>
     </article>
+    
+    <button class="restart">Volver a empezar</button>
 
     <script>
     const quesionnaire = [
@@ -199,56 +324,95 @@
         }
     ]
         var step = 0,
-            response = '',
+            response = [],
+            temp = '',
+            restart = document.querySelector('.restart'),
+        //landing vars
+            landing = document.querySelector('.landing'),
+            inputEmail = document.querySelector('#email'),
+            btnEmail = document.querySelector('.btnEmail'),
+        //action vars
+            action = document.querySelector('.action'),
             WebStep = document.querySelector('.step'),
             question = document.querySelector('.question'),
             imgs = document.querySelectorAll('.img'),
             options = document.querySelectorAll('.option'),
             names = document.querySelectorAll('.option--name'),
-            btnPrevious = document.querySelector('.anterior'),
-
-            action = document.querySelector('.action'),
-            result = document.querySelector('.result'),
-
-            restart = document.querySelector('.restart');
-
-        updateInfo();
+            btnPrevious = document.querySelector('.back'),
+            btnNext = document.querySelector('.next'),
+        //landing result
+            result = document.querySelector('.result');
 
         options.forEach((option, i) =>
             option.addEventListener('click', ()=> {
-                response += names[i].innerHTML + ',';
-                move(1);
+                removeSelected();
+                temp = names[i].innerHTML;
+                option.classList.add("selected")
             })
         )
-        
+
         function move(number) {
-            if(step+number<0){
-                return;
+            if(step+number===0){
+                landing.style.display = 'flex';
+                action.style.display = 'none';
+                restart.style.display = 'none';
             }else if(step+number === 10){
                 action.style.display = 'none';
                 result.style.display = 'flex';
+                restart.style.display = 'inline';
             }else{
                 step += number;
                 updateInfo();
             }
+            temp = '';
+            removeSelected();
+            console.log(response)
         }
 
         function updateInfo () {
-            question.innerHTML = quesionnaire[step].question;
-            WebStep.innerHTML = (step + 1) + '/10'
-            quesionnaire[step].options.forEach((option, i) => {
+            question.innerHTML = quesionnaire[step-1].question;
+            WebStep.innerHTML = (step) + '/10'
+            quesionnaire[step-1].options.forEach((option, i) => {
                 option === '' ? options[i].style.display = 'none' : options[i].style.display = 'block';
                 names[i].innerHTML = option
             });
         }
 
+        btnEmail.onclick = () => {
+            if(inputEmail.value === '' || !inputEmail.value.includes('@')){
+                inputEmail.classList.add('error');
+                return;
+            }else {
+                inputEmail.classList.remove('error');
+                response[step] = inputEmail.value;
+                step +=1;
+                landing.style.display = 'none';
+                action.style.display = 'flex';
+                restart.style.display = 'inline';
+                updateInfo();
+            }
+        }
+
         btnPrevious.onclick = ()=> move(-1);
+
+        btnNext.onclick = () => {
+            if(temp === '')return;
+            response[step] = temp;
+            move(1);
+        }
+
         restart.onclick = ()=> {
+            landing.style.display = 'flex';
             result.style.display = 'none';
-            action.style.display = 'flex';
+            action.style.display = 'none';
+            restart.style.display = 'none';
+            inputEmail.value = '';
             step = 0;
-            updateInfo();
-        };
+        }
+
+        function removeSelected() {
+            options.forEach( option => option.classList.remove("selected") );
+        }
 
     </script>
 </body>
