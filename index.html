@@ -99,6 +99,11 @@
         margin-top: 40px;
     }
 
+    .action .sm{
+        display: none;
+        margin-top: -40px;
+    }
+
     .action .step{
         font-weight: 600;
         font-size: 36px;
@@ -286,7 +291,7 @@
     <article class="action">
         <h4 class="step">step</h4>
         <h1 class="question">Pregunta</h1>
-    
+        <p class="sm">(Selecciona los que apliquen)</p>
         <div class="options">
             <div class="option">
                 <img src="11.svg" alt="img"class='img icon'>
@@ -370,6 +375,7 @@
         var step = 0,
             response = [],
             temp = '',
+            isSm = false;
             restart = document.querySelector('.restart'),
         //landing vars
             landing = document.querySelector('.landing'),
@@ -377,6 +383,7 @@
             btnEmail = document.querySelector('.btnEmail'),
         //action vars
             action = document.querySelector('.action'),
+            sm  = document.querySelector('.sm'),
             WebStep = document.querySelector('.step'),
             question = document.querySelector('.question'),
             imgs = document.querySelectorAll('.icon'),
@@ -389,8 +396,20 @@
 
         options.forEach((option, i) =>
             option.addEventListener('click', ()=> {
-                removeSelected();
-                temp = names[i].innerHTML;
+                if(isSm){
+                    if(temp[i] === undefined || temp[i] === null || temp[i] === ''){
+                        temp[i] = names[i].innerHTML;
+                    }else{
+                        temp[i] = '';
+                        option.classList.remove("selected");
+                        console.log(temp);
+                        return;
+                    }
+                    console.log(temp);
+                }else{
+                    removeSelected();
+                    temp = names[i].innerHTML;
+                } 
                 option.classList.add("selected")
             })
         )
@@ -406,14 +425,16 @@
                 step += number;
                 updateInfo();
             }
-            temp = '';
+            temp = isSm? [] : '';
             removeSelected();
             console.log(response);
         }
 
         function updateInfo () {
+            isSm = quesionnaire[step-1].type === 'sm';
             question.innerHTML = quesionnaire[step-1].question;
             WebStep.innerHTML = (step) + '/'+quesionnaire.length;
+            sm.style.display = isSm ? 'block' : 'none';
             quesionnaire[step-1].options.forEach((option, i) => {
                 option === '' ? options[i].style.display = 'none' : options[i].style.display = 'flex';
                 names[i].innerHTML = option;
