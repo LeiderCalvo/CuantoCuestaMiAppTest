@@ -13,23 +13,25 @@
         margin: 0;
         font-family: 'Poppins', sans-serif;
         transition: transform .35s ease;
-        color: #3d3935;
+        color: #2B303A;
+        font-size: 16px;
+        line-height: 24px;
     }
 
     button {
-        background: #7C33FF;
         color: white;
         border: none;
-        border-radius: 20px;
         font-size: 1em;
         padding: 10px;
         width: 15%;
         cursor: pointer;
+        background: #7C33FF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
     }
 
     html body {
         width: 100%;
-        background-color: #EFF5F9;
+        background-color: #FFF;
         text-align: center;
     }
 
@@ -49,30 +51,45 @@
         margin-top: 90px;
     }
 
+    .landing *{
+        width: 50%;
+    }
+
+    .landing h1 {
+        font-weight: 600;
+        font-size: 36px;
+        line-height: 40px;
+        margin-bottom: 40px;
+    }
+
     .landing img {
         width: 250px;
     }
 
     .landing p {
-        width: 40%;
+        width: 45%;
     }
 
     .landing .row{
         margin-top: 50px;
-        width: 40%;
+        width: 383px;
     }
 
     .landing .row button{
-        width: 40%;
-        border-radius: 0 15px 15px 0;
+        width: 96px;
+        height: 55px;
     }
 
     .landing .row input{
-        width: 60%;
+        width: 287px;
+        height: 55px;
+        border: none;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+        text-align: center;
     }
 
     .error {
-        border-color: red;
+        border: solid 1px #ff334b !important;
     }
 
     /* Cuestionario action */
@@ -82,46 +99,94 @@
         margin-top: 40px;
     }
 
+    .action .step{
+        font-weight: 600;
+        font-size: 36px;
+    }
+
     .question {
         margin: 70px 0 50px;
         font-weight: 600;
+        font-size: 36px;
+        line-height: 40px;
     }
 
     .options {
         display: flex;
         flex-direction: row;
-        width: 70%;
         justify-content: space-between;
     }
 
     .option {
         transform: translateY(0);
-        padding: 10px;
+        background: #FCFCFC;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+        width: 238px;
+        height: 245px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 0 15px;
     }
 
     .option:hover {
-        background: rgba(255,255,255,.4);
+        background: #EFEFEF;
         cursor: pointer;
         transform: translateY(-10px);
     }
 
+    .option p{
+        margin-top: 10px;
+    }
+
     .selected {
-        background: rgba(255,255,255,.4);
+        background: #FCFCFC;
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
         cursor: pointer;
         transform: translateY(-10px);
     }
 
-    img {
-        width: 150px;
-    }
-
     .btns {
         margin: 50px 0;
-        width: 100%;
+        width: 60%;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+    }
+
+    .btns .back{
+        border: 2px solid #7C33FF;
+        background: none;
+        box-sizing: border-box;
+        width: 140px;
+        height: 55px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        color: #7C33FF;
+    }
+
+    .btns .back img{
+        margin-right: 10px;
+    }
+
+    .btns .restart {
+        background: none;
+        color: #7C33FF;
+        box-shadow: none;
+        width: fit-content;
+    }
+
+    .btns .next{
+        box-sizing: border-box;
+        width: 140px;
+        height: 55px;
+        border-radius: 5px;
+    }
+
+    .btns .next img{
+        margin-left: 10px;
     }
 
     /* pantalla final */
@@ -181,7 +246,6 @@
 
     .row div {
         width: 22%;
-        border-radius: 5px;
         padding: 5px 0;
         color: white;
         cursor: pointer;
@@ -206,25 +270,16 @@
     .row .tweeter {
         background-color: #00ACED;
     }
-
-    /* botón que reinicia la aplicación */
-
-    .restart {
-        background: none;
-        color: #3d3935;
-        font-weight: 600;
-        display: none;
-    }
 </style>
 
 <body>
     <article class="landing">
         <h1>¿Qué paquete necesito para mi sitio web y cuánto cuesta?</h1>
-        <img src="https://www.cuantocuestamiweb.com.co/img/web/answer-4-1.png" alt="img"class='img'>
-        <p><strong>estos sencillos pasos, encuentra el paquete indicado para hacer realidad tu página web, y recibe por correo una cotización aproximada a la medida de tus necesidades.</strong></p>
+        <img src="landing.svg" alt="img"class='img'>
+        <p>Con estos sencillos pasos, encuentra el paquete indicado para hacer realidad tu página web, y recibe por correo una cotización aproximada a la medida de tus necesidades.</p>
         <div class="row">
-            <input type="text" placeholder="      Ingresa aquí tu email" id="email">
-            <button class="btnEmail">Empezar</button>
+            <input type="text" placeholder="Ingresa aquí tu correo" id="email">
+            <button class="btnEmail">Go!</button>
         </div>
     </article>
 
@@ -234,26 +289,27 @@
     
         <div class="options">
             <div class="option">
-                <img src="https://www.cuantocuestamiweb.com.co/img/web/answer-4-1.png" alt="img"class='img'>
+                <img src="11.svg" alt="img"class='img icon'>
                 <p class="option--name">Nombre2</p>
             </div>
             <div class="option">
-                <img src="https://www.cuantocuestamiweb.com.co/img/web/answer-4-1.png" alt="img"class='img'>
+                <img src="12.svg" alt="img"class='img icon'>
                 <p class="option--name">Nombre3</p>
             </div>
             <div class="option">
-                <img src="https://www.cuantocuestamiweb.com.co/img/web/answer-4-1.png" alt="img"class='img'>
+                <img src="13.svg" alt="img"class='img icon'>
                 <p class="option--name">Nombre4</p>
             </div>
             <div class="option">
-                <img src="https://www.cuantocuestamiweb.com.co/img/web/answer-4-1.png" alt="img"class='img'>
+                <img src="14.svg" alt="img"class='img icon'>
                 <p class="option--name">Nombre5</p>
             </div>
         </div>
         
         <div class="btns">
-            <button class="back">Atrás</button>
-            <button class="next">Siguiente</button>
+            <button class="back"><img src="backArrow.svg" alt="">Atrás</button>
+            <button class="restart">Volver a empezar</button>
+            <button class="next">Siguiente<img src="nextArrow.svg" alt=""></button>
         </div>
     </article>
 
@@ -277,50 +333,38 @@
 
         <p class="message2"><strong>Contáctanos</strong> sobre tu proyecto o <strong>mira algunos de nuestros casos de éxito.</strong></p>
     </article>
-    
-    <button class="restart">Volver a empezar</button>
 
     <script>
     const quesionnaire = [
         {
             question: '¿Qué tipo de web estás buscando?',
-            options: ['E-commerce/Tienda online', 'Web con blog', 'Web para empresa/Corporativa', 'Web a medida']
+            options: ['Tienda Virtual', 'Sitio Informativo', 'Web con Blog', 'Web a la medida']
         },
         {
             question: '¿Qué diseño quieres que tenga tu Web?',
-            options: ['Usar una plantilla', 'Diseño a medida', 'No necesito el diseño', 'No lo sé']
+            options: ['Seguir Referente', 'Usar una plantilla', 'Diseño a Medida', 'Sin Preferencia']
         },
         {
-            question: '¿Cómo de grande necesitas que sea la web?',
-            options: ['Pequeña: menos de 3 páginas/50 productos', 'Mediana: menos de 10 páginas/200 productos', 'Grande: más de 10 páginas/200 productos', 'No lo sé']
+            question: '¿En qué etapa se encuentra tu web?',
+            options: ['Idea', 'Boceto listo', 'En desarrollo', 'Lanzada']
         },
         {
-            question: '¿En tu web se van a realizar pagos?',
-            options: ['Sí', 'No', 'No lo sé', '']
+            question: '¿Qué tanta información necesita tu web?',
+            type: 'inpt',
+            options: ['Número de Páginas', 'Número de Productos', 'Cantidad de Idiomas', '']
         },
         {
-            question: '¿La Web estará integrada con otra Web, App o ERP?',
-            options: ['Sí', 'No', 'No lo sé', '']
+            question: '¿Necesitas ayuda en la creación de textos o imágenes?',
+            options: ['No, yo mismo lo hago', 'Ayuda con textos', 'Imagenes de Stock', 'Ilustración o fotografía a la medida']
         },
         {
-            question: '¿Tu Web necesita login o registro de usuarios?',
-            options: ['Sí', 'No', 'No lo sé', '']
-        },
-        {
-            question: '¿Va a ser una web multidioma?',
-            options: ['Sí', 'No', 'No lo sé', '']
-        },
-        {
-            question: '¿La Web necesita un directorio/buscador interno?',
-            options: ['Sí', 'No', 'No lo sé', '']
+            question: '¿Tu web necesita alguno de los siguientes?',
+            type: 'sm',
+            options: ['Pagos en línea', "Interacción datos externos, APPS o ERP'S", 'Registro usuario/login', '']
         },
         {
             question: '¿Tu web necesita servicios de SEO?',
-            options: ['Sí', 'No', 'No lo sé', '']
-        },
-        {
-            question: '¿En qué estado se encuentra tu web?',
-            options: ['Solamente es una idea', 'Boceto preparado', 'Web en desarrollo', 'Web lanzada']
+            options: ['Sí, lo necesito', 'No, yo me encargo', 'No lo sé', '']
         }
     ]
         var step = 0,
@@ -335,7 +379,7 @@
             action = document.querySelector('.action'),
             WebStep = document.querySelector('.step'),
             question = document.querySelector('.question'),
-            imgs = document.querySelectorAll('.img'),
+            imgs = document.querySelectorAll('.icon'),
             options = document.querySelectorAll('.option'),
             names = document.querySelectorAll('.option--name'),
             btnPrevious = document.querySelector('.back'),
@@ -355,26 +399,25 @@
             if(step+number===0){
                 landing.style.display = 'flex';
                 action.style.display = 'none';
-                restart.style.display = 'none';
-            }else if(step+number === 10){
+            }else if(step+number === quesionnaire.length+1){
                 action.style.display = 'none';
                 result.style.display = 'flex';
-                restart.style.display = 'inline';
             }else{
                 step += number;
                 updateInfo();
             }
             temp = '';
             removeSelected();
-            console.log(response)
+            console.log(response);
         }
 
         function updateInfo () {
             question.innerHTML = quesionnaire[step-1].question;
-            WebStep.innerHTML = (step) + '/10'
+            WebStep.innerHTML = (step) + '/'+quesionnaire.length;
             quesionnaire[step-1].options.forEach((option, i) => {
-                option === '' ? options[i].style.display = 'none' : options[i].style.display = 'block';
-                names[i].innerHTML = option
+                option === '' ? options[i].style.display = 'none' : options[i].style.display = 'flex';
+                names[i].innerHTML = option;
+                imgs[i].src = step+''+(i+1)+'.svg';
             });
         }
 
@@ -388,7 +431,6 @@
                 step +=1;
                 landing.style.display = 'none';
                 action.style.display = 'flex';
-                restart.style.display = 'inline';
                 updateInfo();
             }
         }
@@ -405,7 +447,6 @@
             landing.style.display = 'flex';
             result.style.display = 'none';
             action.style.display = 'none';
-            restart.style.display = 'none';
             inputEmail.value = '';
             step = 0;
         }
