@@ -253,12 +253,14 @@
         margin-top: 20px;
     }
 
+    .first{
+        margin-top: 80px;
+    }
+
     .title {
-        font-size: 32px;
-        font-weight: 700;
         margin-top: 20px;
-        width: 50%;
-        text-align: left;
+        font-weight: bold;
+        font-size: 36px;
     }
 
     .row {
@@ -266,66 +268,106 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        margin-top: 80px;
     }
 
-    .row p {
+    .row .col {
         text-align: left;
-        width: 60%;
+        width: 55%;
     }
 
-    .row img {
-        width: 180px;
+    .col #plan{
+        font-weight: bold;
+        font-size: 36px;
+        color: #E34651;
+        margin-bottom: 15px;
     }
 
-    .message {
-        width: 50%;
-        font-weight: 300;
-        font-size: 16px;
+    .col p{
+        margin-bottom: 10px;
     }
 
-    .newProyect {
-        font-size: 1.2em;
-        width: 20%;
-        margin: 20px 0;
+    .col p strong{
+        color: #E34651;
+        font-weight: bold;
     }
 
-    .message2 {
-        margin-top: 20px;
+    .result .btns .back{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
     }
 
-    .message2 strong {
-        color: #7C33FF;
+    .result .btns .next{
+        width: fit-content;
     }
 
     .redes {
-        margin-top: 20px;
+        position: absolute;
+        background: #FFFFFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        padding: 10px 20px;
+        margin: 0;
+        top: -50px;
+        left: -50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        display: none;
     }
 
-    .row div {
-        width: 22%;
-        padding: 5px 0;
-        color: white;
+    .redes .row {
+        width: 100%;
+        margin: 0;
+    }
+
+    .redes .row p{
+        font-weight: 600;
+        color: #ACACAC;
+        margin-bottom: 5px;
+    }
+
+    .wrap{
+        width: 100% !important;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .redes span{
+        width: 100% !important;
+        font-size: 14px;
+        color: #ACACAC;
+        background: #F3F7FB;
+        border-radius: 5px;
+        text-align: left;
+    }
+
+    .redes a {
+        width: 50%;
+        margin-bottom: 10px;
+        text-align: left;
         cursor: pointer;
+        text-decoration: none;
     }
 
-    .row div img {
-        width: auto;
+    .facebook {
+        color: #3B5998;
     }
 
-    .row .facebook {
-        background-color: #3B5998;
+    .linkedin {
+        color: #007BB6;
     }
 
-    .row .linkedin {
-        background-color: #007BB6;
+    .google {
+        color: #DD4B39;
     }
 
-    .row .google {
-        background-color: #DD4B39;
-    }
-
-    .row .tweeter {
-        background-color: #00ACED;
+    .tweeter {
+        color: #00ACED;
     }
 </style>
 
@@ -394,24 +436,40 @@
     </article>
 
     <article class="result">
-        <p><strong>¡Todo listo, Hemos terminado!<br/>El paquete recomendado para tu sitio web es:</strong></p>
-        <h2 class="title">Basic plan</h2>
+        <p class="first">Te ayudamos a realizar tus proyectos, por eso</p>
+        <h2 class="title">Hemos encontrado tu paquete ideal</h2>
         <div class="row">
-            <img src="https://www.cuantocuestamiweb.com.co/img/web/answer-4-1.png" alt="img"class='img'>
-            <p>El plan básico comprende sitios web sencillos de tipo informativo, que no tienen tienen tiendas virtuales, mùltiples idiomas, ni características avanzadas a la medida.<br/>Si quieres más características, considera alguno de los paquetes superiores</p>
+            <img src="starter.svg" alt="img"class='img' id='plan--img'>
+            <div class="col">
+                <h1 id='plan'>PLan</h1>
+                <p id='plan--description'>El plan básico comprende sitios web sencillos de tipo informativo, que no tienen tiendas virtuales, múltiples idiomas, ni caraterísticas avanzadas a la medida. Si requieres más características, considera alguno de los paquetes superiores.</p>
+                <p><strong>Hablemos</strong>sobre tu proyecto o mira algunos de nuestros <strong>casos de éxito.</strong></p>
+                <p>¡Dale un vistazo a tu correo!</p>
+            </div>
         </div>
-        <p class="message">Recibirás por correo una cotización a la medida de tus respuestas, y podrás ponerte en contacto con nuestro equipo si tienes dudas</p>
-        <button class="newProyect">Iniciar mi sitio web</button>
-        <p><strong>¿Algún amigo estaría interesado?<br/>Ayúdanos compartiendo!</strong></p>
-
-        <div class="redes row">
-            <div class="facebook"><img src="facebook.png" alt="img"class='img'> Share</div>
-            <div class="linkedin"><img src="linkedin.png" alt="img"class='img'> Share</div>
-            <div class="google"><img src="google.png" alt="img"class='img'> Google+</div>
-            <div class="tweeter"><img src="tweeter.png" alt="img"class='img'> Tweet</div>
+        
+        <div class="btns">
+            <button class="next" id="beginWeb">Iniciar mi sition web</button>
+            <button class="restart">Volver a empezar</button>
+            <button class="back" id="share" style="position: relative;">
+                Compartir
+                <img src="share.svg" alt="" style="margin: 0 0 0 10px;">
+                <div class="redes row" id='shareInfo'>
+                    <div class="row">
+                        <p>Compartir</p>
+                        <img src="xClose.svg" alt="" id='xClose' style="z-index: 5;">                           
+                    </div>
+                    <div class="wrap">
+                        <a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=goconsulting.com">facebook</a>
+                        <a class="google" target="_blank" href="https://plus.google.com/share?url=goconsulting.com">Google+</a>
+                        <a class="linkedin" target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=goconsulting.com&title=Comparte&summary=resumen&source=goconsulting.com">Linkedin</a>
+                        <a class="tweeter" target="_blank" href="https://twitter.com/intent/tweet?text=Sigue%20a%20goconsulting.com">Twitter</a>
+                    </div>
+                    <span>http://goconsulting.com/planes-supe</span>
+                </div>
+            </button>
         </div>
 
-        <p class="message2"><strong>Contáctanos</strong> sobre tu proyecto o <strong>mira algunos de nuestros casos de éxito.</strong></p>
     </article>
 
     <script>
@@ -447,12 +505,31 @@
             options: ['Sí, lo necesito', 'No, yo me encargo', 'No lo sé', '']
         }
     ]
+    const plansDescription = [
+        {
+            plan: 'STARTER PLAN',
+            description: 'El plan básico comprende sitios web sencillos de tipo informativo, que no tienen tiendas virtuales, múltiples idiomas, ni caraterísticas avanzadas a la medida. Si requieres más características, considera alguno de los paquetes superiores.',
+            img: 'starter.svg'
+        },
+        {
+            plan: 'GROWTH PLAN',
+            description: 'Tu sitio web con tiendas virtuales o pagos en linea, puede tener múltiples idiomas, y sistema de registro y gestión de usuarios. Si buscas subir de nivel con integraciones a la medida, o desarrollos personalizados como aplicaciones web, CUSTOM PLAN puede ser para ti.',
+            img: 'growth.svg'
+        },
+        {
+            plan: 'CUSTOM PLAN',
+            description: 'Si buscas integraciones a la medida, o desarrollos personalizados como aplicaciones web o diseños avanzados bajo pedido, CUSTOM PLAN es perfecto para ti. Adicionalmente puedes solicitar beneficios de los demás planes, como tiendas virtuales, pagos en linea, múltiples idiomas, etc.',
+            img: 'custom.svg'
+        }
+    ]
         var step = 0,
             response = [],
+            plan = 0,
+            price = 0,
             temp = '',
             isSm = false,
             isInpt = false,
-            restart = document.querySelector('.restart'),
+            restart = document.querySelectorAll('.restart'),
         //landing vars
             landing = document.querySelector('.landing'),
             inputEmail = document.querySelector('#email'),
@@ -474,8 +551,14 @@
             btnPrevious = document.querySelector('.back'),
             btnNext = document.querySelector('.next'),
         //landing result
+            plantext = document.querySelector('#plan'),
+            planImg = document.querySelector('#plan--img'),
+            planDescrip = document.querySelector('#plan--description'),
             result = document.querySelector('.result');
-            console.log(inputs[0].step)
+            beginWeb = document.querySelector('#beginWeb'),
+            shareResult = document.querySelector('#share'),
+            xclose = document.querySelector('#xClose'),
+            redes = document.querySelector('#shareInfo');
 
         subBtns.forEach( (sub, i) => sub.addEventListener('click',
             ()=> {
@@ -494,10 +577,12 @@
             option.addEventListener('click', ()=> {
                 if(isSm){
                     if(temp[i] === undefined || temp[i] === null || temp[i] === ''){
-                        temp[i] = ames[i].innerHTML;
+                        temp[i] = names[i].innerHTML;
+                        option.classList.add("selected");
+                        return;
                     }else{
                         temp[i] = '';
-                        ption.classList.remove("selected");
+                        option.classList.remove("selected");
                         return;
                     }
                 }if(isInpt){
@@ -506,8 +591,8 @@
                 }else{
                     removeSelected();
                     temp = names[i].innerHTML;
+                    option.classList.add("selected");
                 } 
-                option.classList.add("selected")
             })
         )
 
@@ -516,15 +601,106 @@
                 landing.style.display = 'flex';
                 action.style.display = 'none';
             }else if(step+number === quesionnaire.length+1){
-                action.style.display = 'none';
-                result.style.display = 'flex';
+                checkPLan();
             }else{
                 step += number;
                 updateInfo();
             }
-            temp = isSm || isInpt? [] : '';
+            temp = isSm || isInpt? ['','',''] : '';
             removeSelected();
             console.log(response);
+        }
+
+        function setPlan(param) {
+            if(param === true){
+                plan = plan < 3? plan+1 : plan; 
+            }else{
+                plan = param > plan? param : plan; 
+            }
+        }
+    
+        function checkPLan(){
+            let numPag = response[4][0] === ''? 1 : parseInt(response[4][0]);
+            let numProd = response[4][1] === ''? 1 : parseInt( response[4][1]);
+            let numIdi = response[4][2] === ''? 1 : parseInt(response[4][2]);
+
+            response.forEach( (resp, i) => {
+                switch (i) {
+                    case 1:
+                        if(resp === 'Tienda Virtual'){
+                            setPlan(1);
+                        }else if(resp === 'Web a la medida'){
+                            setPlan(2);
+                        }else{
+                            setPlan(0);
+                        }
+                        break;
+
+                    case 2:
+                        if(resp === 'Diseño a Medida'){
+                            setPlan(true);
+                            price += 200;
+                        }else{
+                            setPlan(0);
+                        }
+                        break;
+
+                    case 4:
+                        price += 99*numPag;
+                        price += 15*numProd;
+                        price += 80*numPag*numPag;
+                        break;
+
+                    case 5:
+                        if(resp === 'Ayuda con textos'){
+                            setPlan(1);
+                            price += 70*numPag;
+                        }if(resp === 'Imagenes de Stock'){
+                            setPlan(1);
+                            price += 99;
+                        }if(resp === 'Ilustración o fotografía a la medida'){
+                            setPlan(2);
+                            price += 300;
+                        }
+                        break;
+
+                    case 6:
+                        resp.forEach( (item, i) => {
+                            if(item === ''){
+                                return
+                            }else if(item === 'Pagos en línea'){
+                                setPlan(1);
+                                price += 200;
+                            }else if(item === "Interacción datos externos, APPS o ERP'S"){
+                                setPlan(2);
+                                price += 300;
+                            }if(item === 'Registro usuario/login'){
+                                setPlan(1);
+                                price += 200;
+                            }
+                        })
+                        break;
+
+                    case 7:
+                        if(resp === 'Sí, lo necesito'){
+                            setPlan(1);
+                            price += 200*numIdi;
+                        }
+                        break;
+                
+                    default:
+                        break;
+                }
+            });
+            
+            response.push(price);
+            response.push(plansDescription[plan].plan);
+
+            plantext.innerHTML = plansDescription[plan].plan;
+            planDescrip.innerHTML = plansDescription[plan].description;
+            planImg.src = plansDescription[plan].img;
+            action.style.display = 'none';
+            result.style.display = 'flex';
         }
 
         function updateInfo () {
@@ -558,19 +734,31 @@
 
         btnPrevious.onclick = ()=> move(-1);
 
+        beginWeb.onclick = ()=> {
+            console.log(response);
+        };
+
+        shareResult.onclick = ()=> {
+            redes.style.display = redes.style.display === 'block'? 'none' : 'flex';
+        };
+
+        xclose.onclick = ()=> {
+            redes.style.display = 'block';
+        };
+
         btnNext.onclick = () => {
             if(temp === '')return;
             response[step] = temp;
             move(1);
         }
 
-        restart.onclick = ()=> {
+        restart.forEach( btn => btn.onclick = ()=> {
             landing.style.display = 'flex';
             result.style.display = 'none';
             action.style.display = 'none';
             inputEmail.value = '';
             step = 0;
-        }
+        })
 
         function removeSelected() {
             options.forEach( option => option.classList.remove("selected") );
