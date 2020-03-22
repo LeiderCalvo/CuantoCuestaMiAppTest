@@ -146,6 +146,58 @@
         margin-top: 10px;
     }
 
+    .option--rowInpt{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .option--rowInpt button{
+        width: 28px;
+        height: 28px;
+        background: #FFFFFA;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        color: #7C33FF;
+        font-size: 20px;
+        text-align: center;
+        padding: 0;
+    }
+
+    .option--inpt{
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: #7C33FF;
+        text-align: center;
+        width: 50px;
+        height: 40px;
+    }
+
+    .option--inpt::placeholder{
+        font-size: 24px;
+        color: #7C33FF;
+    }
+
+        /* Aggressive reset to remove the initial spinner */
+            .option--inpt[type="number"] {
+            -moz-appearance: textfield;
+            }
+            .option--inpt[type="number"]::-webkit-inner-spin-button,
+            .option--inpt[type="number"]::-webkit-outer-spin-button {
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            appearance:none;
+            margin: 0;
+            }
+            .option--inpt[type="number"]:hover::-webkit-inner-spin-button,
+            .option--inpt[type="number"]:hover::-webkit-outer-spin-button {
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            appearance:none;
+            margin:0;
+            }
+
     .selected {
         background: #FCFCFC;
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -296,18 +348,41 @@
             <div class="option">
                 <img src="11.svg" alt="img"class='img icon'>
                 <p class="option--name">Nombre2</p>
+                <div class="option--rowInpt">
+                    <button class="substrac">-</button>
+                    <input type="number" class="option--inpt" min="1" max="10" step="1" value="1">
+                    <button class="add">+</button>
+                </div>
             </div>
             <div class="option">
                 <img src="12.svg" alt="img"class='img icon'>
                 <p class="option--name">Nombre3</p>
+
+                <div class="option--rowInpt">
+                    <button class="substrac">-</button>
+                    <input type="number" class="option--inpt" min="1" max="500" step="50" value="1">
+                    <button class="add">+</button>
+                </div>
             </div>
             <div class="option">
                 <img src="13.svg" alt="img"class='img icon'>
                 <p class="option--name">Nombre4</p>
+
+                <div class="option--rowInpt">
+                    <button class="substrac">-</button>
+                    <input type="number" class="option--inpt" min="1" max="4" step="1" value="1">
+                    <button class="add">+</button>
+                </div>
             </div>
             <div class="option">
                 <img src="14.svg" alt="img"class='img icon'>
                 <p class="option--name">Nombre5</p>
+
+                <div class="option--rowInpt">
+                    <button class="substrac">-</button>
+                    <input type="number" class="option--inpt" value='1' step="1">
+                    <button class="add">+</button>
+                </div>
             </div>
         </div>
         
@@ -375,7 +450,8 @@
         var step = 0,
             response = [],
             temp = '',
-            isSm = false;
+            isSm = false,
+            isInpt = false,
             restart = document.querySelector('.restart'),
         //landing vars
             landing = document.querySelector('.landing'),
@@ -389,23 +465,44 @@
             imgs = document.querySelectorAll('.icon'),
             options = document.querySelectorAll('.option'),
             names = document.querySelectorAll('.option--name'),
+
+            subBtns = document.querySelectorAll('.substrac'),
+            addBtns = document.querySelectorAll('.add'),
+            rowsInpts = document.querySelectorAll('.option--rowInpt'),
+            inputs = document.querySelectorAll('.option--inpt'),
+
             btnPrevious = document.querySelector('.back'),
             btnNext = document.querySelector('.next'),
         //landing result
             result = document.querySelector('.result');
+            console.log(inputs[0].step)
+
+        subBtns.forEach( (sub, i) => sub.addEventListener('click',
+            ()=> {
+                let newVal = parseInt(inputs[i].value) - parseInt(inputs[i].step);
+                inputs[i].value = newVal>1? newVal : 1;
+            })
+        );
+        addBtns.forEach( (add, i) => add.addEventListener('click',
+            ()=> {
+                let newVal = parseInt(inputs[i].value) + parseInt(inputs[i].step);
+                inputs[i].value = newVal > parseInt(inputs[i].max)? parseInt(inputs[i].max) : newVal;
+            })
+        );
 
         options.forEach((option, i) =>
             option.addEventListener('click', ()=> {
                 if(isSm){
                     if(temp[i] === undefined || temp[i] === null || temp[i] === ''){
-                        temp[i] = names[i].innerHTML;
+                        temp[i] = ames[i].innerHTML;
                     }else{
                         temp[i] = '';
-                        option.classList.remove("selected");
-                        console.log(temp);
+                        ption.classList.remove("selected");
                         return;
                     }
-                    console.log(temp);
+                }if(isInpt){
+                    temp[i] = inputs[i].value;
+                    return;
                 }else{
                     removeSelected();
                     temp = names[i].innerHTML;
@@ -425,13 +522,16 @@
                 step += number;
                 updateInfo();
             }
-            temp = isSm? [] : '';
+            temp = isSm || isInpt? [] : '';
             removeSelected();
             console.log(response);
         }
 
         function updateInfo () {
             isSm = quesionnaire[step-1].type === 'sm';
+            isInpt = quesionnaire[step-1].type === 'inpt';
+            rowsInpts.forEach( inpt =>  inpt.style.display = isInpt? 'block' : 'none');
+
             question.innerHTML = quesionnaire[step-1].question;
             WebStep.innerHTML = (step) + '/'+quesionnaire.length;
             sm.style.display = isSm ? 'block' : 'none';
