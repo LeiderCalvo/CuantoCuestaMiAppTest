@@ -392,7 +392,7 @@
                 <p class="option--name">Nombre2</p>
                 <div class="option--rowInpt">
                     <button class="substrac">-</button>
-                    <input type="number" class="option--inpt" min="1" max="10" step="1" value="1">
+                    <input type="number" class="option--inpt" min="1" max="99" step="1" value="1">
                     <button class="add">+</button>
                 </div>
             </div>
@@ -402,7 +402,7 @@
 
                 <div class="option--rowInpt">
                     <button class="substrac">-</button>
-                    <input type="number" class="option--inpt" min="1" max="500" step="50" value="1">
+                    <input type="number" class="option--inpt" min="1" max="500" step="10" value="1">
                     <button class="add">+</button>
                 </div>
             </div>
@@ -412,7 +412,7 @@
 
                 <div class="option--rowInpt">
                     <button class="substrac">-</button>
-                    <input type="number" class="option--inpt" min="1" max="4" step="1" value="1">
+                    <input type="number" class="option--inpt" min="1" max="10" step="1" value="1">
                     <button class="add">+</button>
                 </div>
             </div>
@@ -460,12 +460,12 @@
                         <img src="xClose.svg" alt="" id='xClose' style="z-index: 5;">                           
                     </div>
                     <div class="wrap">
-                        <a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=goconsulting.com">facebook</a>
-                        <a class="google" target="_blank" href="https://plus.google.com/share?url=goconsulting.com">Google+</a>
-                        <a class="linkedin" target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=goconsulting.com&title=Comparte&summary=resumen&source=goconsulting.com">Linkedin</a>
-                        <a class="tweeter" target="_blank" href="https://twitter.com/intent/tweet?text=Sigue%20a%20goconsulting.com">Twitter</a>
+                        <a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=goconsultingeurope.com/quote/">facebook</a>
+                        <a class="google" target="_blank" href="https://plus.google.com/share?url=goconsultingeurope.com/quote/">Google+</a>
+                        <a class="linkedin" target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=goconsultingeurope.com/quote/&title=Comparte&summary=resumen&source=goconsulting.com">Linkedin</a>
+                        <a class="tweeter" target="_blank" href="https://twitter.com/intent/tweet?text=Sigue%20a%20goconsultingeurope.com/quote/">Twitter</a>
                     </div>
-                    <span>http://goconsulting.com/planes-supe</span>
+                    <span>http://goconsultingeurope.com/quote/</span>
                 </div>
             </button>
         </div>
@@ -493,6 +493,7 @@
         },
         {
             question: '¿Necesitas ayuda en la creación de textos o imágenes?',
+            type: 'sm',
             options: ['No, yo mismo lo hago', 'Ayuda con textos', 'Imagenes de Stock', 'Ilustración o fotografía a la medida']
         },
         {
@@ -652,16 +653,20 @@
                         break;
 
                     case 5:
-                        if(resp === 'Ayuda con textos'){
-                            setPlan(1);
-                            price += 70*numPag;
-                        }if(resp === 'Imagenes de Stock'){
-                            setPlan(1);
-                            price += 99;
-                        }if(resp === 'Ilustración o fotografía a la medida'){
-                            setPlan(2);
-                            price += 300;
-                        }
+                        resp.forEach( (item, i) => {
+                            if(item === ''){
+                                return
+                            }else if(item === 'Ayuda con textos'){
+                                setPlan(1);
+                                price += 70*numPag;
+                            }if(item === 'Imagenes de Stock'){
+                                setPlan(1);
+                                price += 99;
+                            }if(item === 'Ilustración o fotografía a la medida'){
+                                setPlan(2);
+                                price += 300;
+                            }
+                        })
                         break;
 
                     case 6:
