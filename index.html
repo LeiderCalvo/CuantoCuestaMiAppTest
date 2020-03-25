@@ -33,6 +33,7 @@
         width: 100%;
         background-color: #FFF;
         text-align: center;
+        overflow: hidden;
     }
 
     article {
@@ -64,6 +65,7 @@
 
     .landing img {
         width: 250px;
+        margin-bottom: 40px;
     }
 
     .landing p {
@@ -77,7 +79,11 @@
 
     .landing .row button{
         width: 96px;
-        height: 55px;
+        height: 57px;
+    }
+
+    .landing .row button:hover{
+        background-color: #9458FF;
     }
 
     .landing .row input{
@@ -102,6 +108,7 @@
     .action .sm{
         display: none;
         margin-top: -40px;
+        margin-bottom: 20px;
     }
 
     .action .step{
@@ -110,7 +117,7 @@
     }
 
     .question {
-        margin: 70px 0 50px;
+        margin: 50px 0 60px;
         font-weight: 600;
         font-size: 36px;
         line-height: 40px;
@@ -120,6 +127,8 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        margin-top: 20px;
+        margin-bottom: 40px;
     }
 
     .option {
@@ -134,6 +143,7 @@
         align-items: center;
         flex-direction: column;
         margin: 0 15px;
+        position: relative;
     }
 
     .option:hover {
@@ -143,7 +153,9 @@
     }
 
     .option p{
-        margin-top: 10px;
+        position: absolute;
+        bottom: 20px;
+        margin-top: 20px;
     }
 
     .option--rowInpt{
@@ -200,7 +212,7 @@
 
     .selected {
         background: #FCFCFC;
-        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
         cursor: pointer;
         transform: translateY(-10px);
     }
@@ -264,11 +276,12 @@
     }
 
     .row {
-        width: 50%;
+        width: 800px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         margin-top: 80px;
+        margin-bottom: 30px;
     }
 
     .row .col {
@@ -318,6 +331,7 @@
         justify-content: center;
         align-items: flex-start;
         display: none;
+        transition: opacity 5s ease-in;
     }
 
     .redes .row {
@@ -402,7 +416,7 @@
 
                 <div class="option--rowInpt">
                     <button class="substrac">-</button>
-                    <input type="number" class="option--inpt" min="1" max="500" step="10" value="1">
+                    <input type="number" class="option--inpt" min="0" max="500" step="10" value="0">
                     <button class="add">+</button>
                 </div>
             </div>
@@ -564,7 +578,7 @@
         subBtns.forEach( (sub, i) => sub.addEventListener('click',
             ()=> {
                 let newVal = parseInt(inputs[i].value) - parseInt(inputs[i].step);
-                inputs[i].value = newVal>1? newVal : 1;
+                inputs[i].value = newVal>parseInt(inputs[i].min)? newVal : parseInt(inputs[i].min);
             })
         );
         addBtns.forEach( (add, i) => add.addEventListener('click',
@@ -601,11 +615,12 @@
             if(step+number===0){
                 landing.style.display = 'flex';
                 action.style.display = 'none';
+                step=0;
             }else if(step+number === quesionnaire.length+1){
                 checkPLan();
             }else{
-                step += number;
                 updateInfo();
+                step += number;
             }
             temp = isSm || isInpt? ['','',''] : '';
             removeSelected();
@@ -713,14 +728,14 @@
             isInpt = quesionnaire[step-1].type === 'inpt';
             rowsInpts.forEach( inpt =>  inpt.style.display = isInpt? 'block' : 'none');
 
+            quesionnaire[step-1].options.forEach((option, i) => {
+                if(option !== '') imgs[i].src = step+''+(i+1)+'.svg';
+                option === '' ? options[i].style.display = 'none' : options[i].style.display = 'flex';
+                names[i].innerHTML = option;
+            });
             question.innerHTML = quesionnaire[step-1].question;
             WebStep.innerHTML = (step) + '/'+quesionnaire.length;
             sm.style.display = isSm ? 'block' : 'none';
-            quesionnaire[step-1].options.forEach((option, i) => {
-                option === '' ? options[i].style.display = 'none' : options[i].style.display = 'flex';
-                names[i].innerHTML = option;
-                imgs[i].src = step+''+(i+1)+'.svg';
-            });
         }
 
         btnEmail.onclick = () => {
