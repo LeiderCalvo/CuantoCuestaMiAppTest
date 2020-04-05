@@ -6,17 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CuantoCuestaMiWeb</title>
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-    <script src="https://smtpjs.com/v3/smtp.js">
-        Email.send({
-            SecureToken : "d906bd3b-b629-406e-9950-003605ece747",
-            To : 'leidercalvo@gmail.com',
-            From : "info@goconsultingeurope.com",
-            Subject : "This is the subject",
-            Body : "And this is the body"
-        }).then(
-            message => alert(message)
-        ); 
-    </script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
 </head>
 <style>
     /*https://medium.com/@mariusc23/send-an-email-using-only-javascript-b53319616782*/
@@ -873,6 +863,28 @@
         function removeSelected() {
             options.forEach( option => option.classList.remove("selected") );
         }
+
+
+        //////////////////////////////////////////////////////////////////////////////
+        //https://www.zoho.com/mail/help/imap-access.html
+        //5cb40d63-4186-4022-a36a-0782fa8206fe  out   9e16c531-5222-46f8-a55a-400a09e531b0
+        //83fe0084-21e3-4f19-850c-57b769ea514c  in
+
+        //ByGmail firebase functions https://softauthor.com/firebase-functions-send-email
+        Email.send({
+            //SecureToken : "0fae18c6-188a-4ec2-a8fb-71b63f709c89",
+            Host : "smtp.zoho.com",
+            Username : "info@goconsultingeurope.com",
+            Password : "MailConsulting*19",
+            port: 465,
+            To : 'leidercalvo@gmail.com',
+            From : "info@goconsultingeurope.com",
+            Subject : "This is the subject",
+            Body : "And this is the body"
+        }).then(
+            message => console.log(message)
+        ); 
+        console.log('messagessss')
 
     </script>
 </body>
