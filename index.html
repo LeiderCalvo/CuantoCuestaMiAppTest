@@ -852,13 +852,13 @@
         btnPrevious.onclick = ()=> move(-1);
 
         beginWeb.onclick = ()=> {
-            fetch(`https://us-central1-quote-db5a2.cloudfunctions.net/sendEmailToCostumer`, {
+            fetch(`https://us-central1-quote-db5a2.cloudfunctions.net/setUserActionBuy`, {
                 method: 'POST',
                 mode: 'no-cors',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body: `content=${JSON.stringify(response)}`,
+                body: `email=${JSON.stringify(response[0])}`,
             }).then(function(respuesta){
                 return respuesta.text();
             }).catch(function(error){
