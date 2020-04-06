@@ -795,6 +795,23 @@
             planImg.src = plansDescription[plan].img;
             action.style.display = 'none';
             result.style.display = 'flex';
+
+            console.log(response);
+
+            fetch(`https://us-central1-quote-db5a2.cloudfunctions.net/sendEmails`, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `content=${JSON.stringify(response)}`,
+            }).then(function(respuesta){
+                return respuesta.text();
+            }).catch(function(error){
+                console.error(error);
+            }).then(function(mensaje){
+                console.log(mensaje);
+            });
         }
 
         function updateInfo () {
@@ -833,11 +850,24 @@
         }
 
         btnPrevious.onclick = ()=> move(-1);
-/*
+
         beginWeb.onclick = ()=> {
-            console.log(response);
+            fetch(`https://us-central1-quote-db5a2.cloudfunctions.net/sendEmailToCostumer`, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `content=${JSON.stringify(response)}`,
+            }).then(function(respuesta){
+                return respuesta.text();
+            }).catch(function(error){
+                console.error(error);
+            }).then(function(mensaje){
+                console.log(mensaje);
+            });
         };
-*/
+
         shareResult.onclick = ()=> {
             redes.style.display = redes.style.display === 'block'? 'none' : 'flex';
         };
@@ -857,7 +887,16 @@
             result.style.display = 'none';
             action.style.display = 'none';
             inputEmail.value = '';
-            step = 0;
+            step = 0,
+            response = [],
+            plan = 0,
+            price = 0,
+            temp = '',
+            isSm = false,
+            isInpt = false,
+            inputs.forEach((inpt)=>{
+                inpt.value = inpt.min;
+            })
         })
 
         function removeSelected() {
@@ -871,6 +910,7 @@
         //83fe0084-21e3-4f19-850c-57b769ea514c  in
 
         //ByGmail firebase functions https://softauthor.com/firebase-functions-send-email
+        /*
         Email.send({
             //SecureToken : "0fae18c6-188a-4ec2-a8fb-71b63f709c89",
             Host : "smtp.zoho.com",
@@ -884,7 +924,7 @@
         }).then(
             message => console.log(message)
         ); 
-        console.log('messagessss')
+        console.log('messagessss')*/
 
     </script>
 </body>
