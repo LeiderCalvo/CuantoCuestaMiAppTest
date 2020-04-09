@@ -105,3 +105,19 @@ exports.setUserActionBuy = functions.https.onRequest((req, res) => {
     admin.firestore().collection('requests').doc(`${id}`).update({action: true}).then(r => res.send('completed') 
     ).catch(err=> res.send(err) );
 });
+
+exports.getUserDocument = functions.https.onRequest((req, res) => {
+    const obj = req.body.email;
+    let id = obj.replace('@','');
+    id = id.replace('.','');
+    
+    admin.firestore().collection('requests').doc(`${id}`).get()
+    .then(doc => {
+        if (!doc.exists) {
+            return res.send('Not Found')
+        } 
+        return res.send( JSON.stringify( doc.data() ));
+    } 
+    ).catch(err=> res.send(err) );
+});
+   
