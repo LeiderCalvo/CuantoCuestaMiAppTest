@@ -1,7 +1,13 @@
 const functions = require('firebase-functions');
 const admin = require("firebase-admin");
 const nodemailer = require('nodemailer');
+const express = require('express');
+const cors = require('cors');
+
 admin.initializeApp(functions.config().firebase);
+
+const app = express();
+app.use(cors({ origin: true }));
 
 /*Intento con zoho*/
 var trans = nodemailer.createTransport({
@@ -17,8 +23,6 @@ var trans = nodemailer.createTransport({
       rejectUnauthorized: false
     }
 });
-
-
 exports.sendEmailByZoho = functions.https.onRequest((req, res) => {
     // verify connection configuration
     trans.verify(function(error, success) {
@@ -98,16 +102,16 @@ exports.sendEmails = functions.https.onRequest((req, res) => {
     });
 });
 
-exports.setUserActionBuy = functions.https.onRequest((req, res) => {
-    const obj = JSON.parse(req.body.email);
+//////////////////////////////////////////////////////////////////////////////////// CRUD EXPRESS
+
+app.put('/setUserActionBuy', (req, res) => {
+    const obj = req.query.email;
     let id = obj.replace('@',''); id = id.replace('.','');
-    
-    admin.firestore().collection('requests').doc(`${id}`).update({action: true}).then(r => res.send('completed') 
-    ).catch(err=> res.send(err) );
+    admin.firestore().collection('requests').doc(`${id}`).update({action: true}).then(r => res.send('completed')).catch(err=> res.send(err) );
 });
 
-exports.getUserDocument = functions.https.onRequest((req, res) => {
-    const obj = req.body.email;
+app.get('/getUserDocument', (req, res) => {
+    const obj = req.query.email;
     let id = obj.replace('@','');
     id = id.replace('.','');
     
@@ -116,8 +120,10 @@ exports.getUserDocument = functions.https.onRequest((req, res) => {
         if (!doc.exists) {
             return res.send('Not Found')
         } 
-        return res.send( JSON.stringify( doc.data() ));
+        return res.send( doc.data() );
     } 
     ).catch(err=> res.send(err) );
 });
-   
+
+// Expose Express API as a single Cloud Function:
+exports.widgets = functions.https.onRequest(app);
