@@ -73,6 +73,8 @@ exports.sendEmails = functions.https.onRequest((req, res) => {
         answers: [...obj.slice(1, 4), {...obj[4]}, {...obj[5]}, {...obj[6]}, obj[7]],
         price: obj[8],
         plan: obj[9],
+        date: obj[10],
+        dateText: obj[11]
     }).then(r =>  res.send('completed') 
     ).catch(err=> res.send(err) );
 

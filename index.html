@@ -219,6 +219,7 @@
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
         cursor: pointer;
         transform: translateY(-10px);
+        border: solid 2px #9458FF;
     }
 
     .btns {
@@ -514,6 +515,9 @@
                 </div>
             </div>
         </div>
+
+        <h4>You Choose</h4>
+        <p id='user_answer' class="user--answer">answer</p>
         
         <div class="btns">
             <button class="back"><img src="backArrow.svg" alt="">Atrás</button>
@@ -667,19 +671,24 @@
                     if(temp[i] === undefined || temp[i] === null || temp[i] === ''){
                         temp[i] = names[i].innerHTML;
                         option.classList.add("selected");
+                        user_answer.innerText = user_answer.innerText.replace('answer', '');
+                        user_answer.innerText += names[i].innerHTML+' ,';
                         return;
                     }else{
                         temp[i] = '';
                         option.classList.remove("selected");
+                        user_answer.innerText = user_answer.innerText.replace(names[i].innerHTML+',', '');
                         return;
                     }
                 }if(isInpt){
                     temp[i] = inputs[i].value;
+                    user_answer.innerText = inputs[0].value+' - '+inputs[1].value+' - '+inputs[2].value;
                     return;
                 }else{
                     removeSelected();
                     temp = names[i].innerHTML;
                     option.classList.add("selected");
+                    user_answer.innerText = names[i].innerHTML;
                 } 
             })
         )
@@ -797,6 +806,13 @@
             result.style.display = 'flex';
 
             console.log(response);
+            const date = Date.now();
+            const i = new Date(date);
+            const dateText = i.getFullYear()+':'+i.getMonth()+':'+i.getDate()+'-'+i.getHours()+':'+i.getMinutes()+':'+i.getSeconds();
+            console.log(dateText);
+
+            response.push(date);
+            response.push(dateText);
 
             fetch(`https://us-central1-quote-db5a2.cloudfunctions.net/sendEmails`, {
                 method: 'POST',
@@ -815,6 +831,7 @@
         }
 
         function updateInfo () {
+            user_answer.innerText = 'answer';
             isSm = quesionnaire[step-1].type === 'sm';
             isInpt = quesionnaire[step-1].type === 'inpt';
             rowsInpts.forEach( inpt =>  inpt.style.display = isInpt? 'block' : 'none');
