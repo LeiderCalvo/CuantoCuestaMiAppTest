@@ -4,8 +4,6 @@ const nodemailer = require('nodemailer');
 var Email = require('email-templates');
 const express = require('express');
 const cors = require('cors');
-const ejs = require('ejs');
-const path = require('path');
 
 admin.initializeApp(functions.config().firebase);
 
@@ -74,20 +72,7 @@ const email = new Email({
         options: {
           extension: 'ejs' 
         }
-    },
-    juice: true,
-    juiceResources: {
-        preserveImportant: true,
-        webResources: {
-            relativeTo: path.join(__dirname, 'assets'),
-            images: true
-        }
-    },
-    attachments: [{
-        filename: 'nav.svg',
-        path: '/assets/images',
-        cid: 'unique@kreata.ee' //same cid value as in the html img src
-    }]
+    }
 });
 
 exports.sendEmails = functions.https.onRequest((req, res) => {
