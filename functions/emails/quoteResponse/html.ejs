@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mail Template</title>
 </head>
-<style>
-    *{font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: normal;line-height: 150%; color: #757575}
+<style type="text/css">
+    *{font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: normal;line-height: 150%; color: #757575;}
     span {color: #7C33FF;font-weight: bold;}
     hr{opacity: .2; margin-bottom: 20px;}
     button{border: 2px solid #7C33FF;
@@ -21,29 +21,28 @@
     button a{color: #7C33FF; text-decoration: none; font-weight: bold;}
     .btn2 {background-color: #7C33FF;}
     .btn2 a{color: white;}
-
-    body{display: flex; justify-content: center; align-items: center; flex-direction: column;}
     .banner{
         width: 90%;
         background-color: #F7F7F7;
         padding: 40px;
         margin-bottom: 20px;
-        display: flex; justify-content: center; align-items: center; flex-direction: column;
     }
-    .banner img{width: 250px;}
-    .banner h1{color: #7C33FF; margin-bottom: 0;}
-    .col {width: 600px;}
+    .banner img{width: 250px; margin: auto;}
+    .banner h1{color: #7C33FF; margin:0; margin-bottom: 0; text-align: center;}
+    .col {width: 600px; margin: auto;}
     .col img{width: 600px;}
     h3{color: #444444; font-weight: bolder;}
     .col .row {
-        display: flex; justify-content: center; align-items: center; flex-direction: row;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
         flex-wrap: wrap;
         margin-top: 50px;
     }
-    .col .row .response{
+    .response{
         width: 280px;
         text-align: center;
-        display: flex; justify-content: center; align-items: center; flex-direction: column;
         margin: 0 10px 40px;
     }
     .col .row .response .option {
@@ -68,69 +67,73 @@
 </style>
 <body>
     <div class="banner">
-        <img src="./logo.svg" alt="logo">
+        <img src="images/cris.jpg" alt="logo">
         <h1>Your website quote has arrived!</h1>
     </div>
     <div class="col">
         <h3>Hi there visitor!</h3>
         <p>Thanks for using our quotes app in GoConsulting.com.</p>
         <p>Here you can find the estimated total price for your website at the bottom of this email, which would be based on your responses. You can also review your answers and edit them if you need to: <a href="">just create an user with the same email address you used on the quotes app.</a></p>
-        <h3>Your recommended plan is: <span>Growth Plan</span></h3>
+        <h3>Your recommended plan is: <span><%= plan %></span></h3>
         <p>Your website might be an e-commerce with online payments, could have multiple languages, and a system for user registration and suscriptions management.</p>
         <p>If you are looking to level up with custom integrations, or custom developments like web applications, then a Custom Plan might be better for you.</p>
     
         <h3>Review Your Answers</h3>
-        <img src="./nav.svg" alt="nav">
+        <img src="cid:unique@kreata.ee" alt="nav">
         <div class="row">
             <div class="response">
                 <div class="option">
-                    <img src="22.svg" alt="img">
+                    <img src="images/22.svg" alt="img" data-inline>
                 </div>
-                <h3>What kind of website</h3>
-                <p>You selected: <span>Virtual Store</span></p>
+                <h3>What kind of website?</h3>
+                <p>You selected: <span><%= webType %></span></p>
             </div>
             <div class="response">
                 <div class="option">
-                    <img src="22.svg" alt="img">
+                    <img src="images/22.svg" alt="img" data-inline>
                 </div>
-                <h3>What kind of website</h3>
-                <p>You selected: <span>Virtual Store</span></p>
+                <h3>What kind of design?</h3>
+                <p>You selected: <span><%= design %></span></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="response">
+                <div class="option">
+                    <img src="images/22.svg" alt="img" data-inline>
+                </div>
+                <h3>Current status</h3>
+                <p>You selected: <span><%= etage %></span></p>
             </div>
             <div class="response">
                 <div class="option">
-                    <img src="22.svg" alt="img">
+                    <img src="images/22.svg" alt="img" data-inline>
                 </div>
-                <h3>What kind of website</h3>
-                <p>You selected: <span>Virtual Store</span></p>
+                <h3>How much information?</h3>
+                <p>You selected: <span><%= ans4 %></span></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="response">
+                <div class="option">
+                    <img src="images/22.svg" alt="img" data-inline>
+                </div>
+                <h3>Need help with content?</h3>
+                <p>You selected: <span><%= ans5 %></span></p>
             </div>
             <div class="response">
                 <div class="option">
-                    <img src="22.svg" alt="img">
+                    <img src="images/22.svg" alt="img" data-inline>
                 </div>
-                <h3>What kind of website</h3>
-                <p>You selected: <span>Virtual Store</span></p>
+                <h3>Integrations?</h3>
+                <p>You selected: <span><%= ans6 %></span></p>
             </div>
-            <div class="response">
-                <div class="option">
-                    <img src="22.svg" alt="img">
-                </div>
-                <h3>What kind of website</h3>
-                <p>You selected: <span>Virtual Store</span></p>
+        </div>
+        <div class="response" style="margin: auto">
+            <div class="option">
+                <img src="images/22.svg" alt="img" data-inline>
             </div>
-            <div class="response">
-                <div class="option">
-                    <img src="22.svg" alt="img">
-                </div>
-                <h3>What kind of website</h3>
-                <p>You selected: <span>Virtual Store</span></p>
-            </div>
-            <div class="response">
-                <div class="option">
-                    <img src="22.svg" alt="img">
-                </div>
-                <h3>What kind of website</h3>
-                <p>You selected: <span>Virtual Store</span></p>
-            </div>
+            <h3>Hire SEO services?</h3>
+            <p>You selected: <span><%= ans7 %></span></p>
         </div>
         <hr>
         <button><a href="https://goconsultingeurope.com/start/">Edit answers</a></button>
@@ -139,12 +142,12 @@
             <p>Your recommended plan includes everything you have selected, plus</p>
             <span>One Full Year of Hosting, 100% Free.</span>
         
-            <h3>Estimated Price: <span>493 €</span></h3>
+            <h3>Estimated Price: <span><%= price %> €</span></h3>
             <p>Ready to go to the next level?</p>
         
             <button class="btn2"><a href="https://goconsultingeurope.com/start/">Let's Start</a></button>
         
-            <h3>Does it differ from your budget?</h3>
+            <h3 style="text-align: left;">Does it differ from your budget?</h3>
             <p style="text-align: left;">We want to fully understand you and deliver the best solution to your case. You can <a style="color: #7C33FF;" href="https://goconsultingeurope.com/assist/">schedule a free call or meeting</a> if you have any question or want to talk about your expectations; and if you need to re-think your answers you can always use the "Edit Answers" buttom above this section.
             </p>
         </div>
