@@ -98,7 +98,14 @@ exports.sendEmails = functions.https.onRequest((req, res) => {
         ['Pagos en línea', "Interacción datos externos, APPS o ERP'S", 'Registro usuario/login'],
         ['Sí, lo necesito', 'No, yo me encargo', 'No lo sé']
     ],
-    imgs = obj.slice(1, 8).map((res, i) => `https://firebasestorage.googleapis.com/v0/b/quote-db5a2.appspot.com/o/quoteImgs%2F${i+1}${Math.abs(questionaire[i].findIndex( e => e === res))}.png?alt=media`);
+    imgs = obj.slice(1, 8).map((res, i) => {
+        let pos = questionaire[i].findIndex( e => {
+            res = typeof(res) === "object" ? JSON.stringify(res) : res;
+            res.replace(',',''); e.replace(',','');
+            return res.includes(e);
+        });
+        return `https://firebasestorage.googleapis.com/v0/b/quote-db5a2.appspot.com/o/quoteImgs%2F${i+1}${pos===-1? 1 : pos+1}.png?alt=media`;
+    });
 
     return email.send({
         template: 'quoteResponse',
