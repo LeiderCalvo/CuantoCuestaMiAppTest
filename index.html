@@ -844,12 +844,14 @@
             question.innerHTML = quesionnaire[step-1].question;
             WebStep.innerHTML = (step) + '/'+quesionnaire.length;
             sm.style.display = isSm ? 'block' : 'none';
-
-            for (let i = 0; i < quesionnaire[step].options.length; i++) {
-                let img = new Image();
-                img.src = (step+1)+''+(i+1)+'.svg';
-                //console.log('loaded: '+(step+1)+''+(i+1)+'.svg');
-            };
+            
+            if(quesionnaire[step]){
+                for (let i = 0; i < quesionnaire[step].options.length; i++) {
+                    let img = new Image();
+                    img.src = (step+1)+''+(i+1)+'.svg';
+                    //console.log('loaded: '+(step+1)+''+(i+1)+'.svg');
+                };
+            }
         }
 
         btnEmail.onclick = () => {
