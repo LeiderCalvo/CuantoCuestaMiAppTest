@@ -88,6 +88,17 @@ exports.sendEmails = functions.https.onRequest((req, res) => {
         dateText: obj[11]
     }).then(r =>  res.send('completed') 
     ).catch(err=> res.send(err) );
+    
+    let questionaire = [
+        ['Tienda Virtual', 'Sitio Informativo', 'Web con Blog', 'Web a la medida'],
+        ['Seguir Referente', 'Usar una plantilla', 'Diseño a Medida', 'Sin Preferencia'],
+        ['Idea', 'Boceto listo', 'En desarrollo', 'Lanzada'],
+        ['Número de Páginas', 'Número de Productos', 'Cantidad de Idiomas'],
+        ['No, yo mismo lo hago', 'Ayuda con textos', 'Imagenes de Stock', 'Ilustración o fotografía a la medida'],
+        ['Pagos en línea', "Interacción datos externos, APPS o ERP'S", 'Registro usuario/login'],
+        ['Sí, lo necesito', 'No, yo me encargo', 'No lo sé']
+    ],
+    imgs = obj.slice(1, 8).map((res, i) => `https://firebasestorage.googleapis.com/v0/b/quote-db5a2.appspot.com/o/quoteImgs%2F${i+1}${Math.abs(questionaire[i].findIndex( e => e === res))}.png?alt=media`);
 
     return email.send({
         template: 'quoteResponse',
@@ -107,10 +118,11 @@ exports.sendEmails = functions.https.onRequest((req, res) => {
             price: obj[8],
             plan: obj[9],
             date: obj[10],
-            dateText: obj[11]
+            dateText: obj[11],
+            imgs
         }
       })
-      .then( r => res.send(r))
+      .then( r => console.log(r))
       .catch(console.error);
 });
 //////////////////////////////////////////////////////////////////////////////////// CRUD EXPRESS

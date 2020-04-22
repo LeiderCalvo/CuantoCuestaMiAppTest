@@ -26,8 +26,9 @@
         background-color: #F7F7F7;
         padding: 40px;
         margin-bottom: 20px;
+        text-align: center;
     }
-    .banner img{width: 250px; margin: auto;}
+    .banner img{width: 250px; margin-bottom: 10px;}
     .banner h1{color: #7C33FF; margin:0; margin-bottom: 0; text-align: center;}
     .col {width: 600px; margin: auto;}
     .col img{width: 600px;}
@@ -45,12 +46,14 @@
         text-align: center;
         margin: 0 10px 40px;
     }
-    .col .row .response .option {
+    .response .option {
         background: #FCFCFC;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1); padding: 10px; margin-bottom: 10px;}
-    .col .row .response .option img{width: 200px;}
-    .col .row .response h3{margin: 0; color: #9933ff;}
-    .col .row .response p{margin: 0;}
+        padding: 10px; margin-bottom: 10px;
+        border-radius: 10px;
+    }
+    .response .option img{width: unset; height: 100px;}
+    .response h3{margin: 0; color: #9933ff;}
+    .response p{margin: 0;}
 
     .ending{text-align: center;}
     .ending *{margin: 0; margin-top: 10px;}
@@ -62,12 +65,13 @@
         padding: 45px 40px 63px;
         width: 90%; margin-top: 20px;
     }
+    footer .row a{margin: 0 10px;}
     footer hr{width: 40%;}
     footer *:not(hr){color: white; margin: 0; margin-top: 5px;}
 </style>
 <body>
     <div class="banner">
-        <img src="https://firebasestorage.googleapis.com/v0/b/quote-db5a2.appspot.com/o/quoteImgs%2FChrysanthemum.jpg?alt=media&token=a6ee2db3-cc7c-4507-afbb-eda7c6cf1785" alt="img">
+        <img src="https://firebasestorage.googleapis.com/v0/b/quote-db5a2.appspot.com/o/quoteImgs%2Flogo.png?alt=media" alt="img">
         <h1>Your website quote has arrived!</h1>
     </div>
     <div class="col">
@@ -79,18 +83,18 @@
         <p>If you are looking to level up with custom integrations, or custom developments like web applications, then a Custom Plan might be better for you.</p>
     
         <h3>Review Your Answers</h3>
-        <img src="https://firebasestorage.googleapis.com/v0/b/quote-db5a2.appspot.com/o/quoteImgs%2FChrysanthemum.jpg?alt=media&token=a6ee2db3-cc7c-4507-afbb-eda7c6cf1785" alt="nav">
+        <img src="https://firebasestorage.googleapis.com/v0/b/quote-db5a2.appspot.com/o/quoteImgs%2Fnav.png?alt=media" alt="nav">
         <div class="row">
             <div class="response">
                 <div class="option">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/quote-db5a2.appspot.com/o/quoteImgs%2FChrysanthemum.jpg?alt=media&token=a6ee2db3-cc7c-4507-afbb-eda7c6cf1785" alt="img">
+                    <img src=<%= imgs[0] %> alt="img">
                 </div>
                 <h3>What kind of website?</h3>
                 <p>You selected: <span><%= webType %></span></p>
             </div>
             <div class="response">
                 <div class="option">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/quote-db5a2.appspot.com/o/quoteImgs%2FChrysanthemum.jpg?alt=media&token=a6ee2db3-cc7c-4507-afbb-eda7c6cf1785" alt="img">
+                    <img src=<%= imgs[1] %> alt="img">
                 </div>
                 <h3>What kind of design?</h3>
                 <p>You selected: <span><%= design %></span></p>
@@ -99,14 +103,14 @@
         <div class="row">
             <div class="response">
                 <div class="option">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/quote-db5a2.appspot.com/o/quoteImgs%2FChrysanthemum.jpg?alt=media&token=a6ee2db3-cc7c-4507-afbb-eda7c6cf1785" alt="img">
+                    <img src= <%= imgs[2] %> alt="img">
                 </div>
                 <h3>Current status</h3>
                 <p>You selected: <span><%= etage %></span></p>
             </div>
             <div class="response">
                 <div class="option">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/quote-db5a2.appspot.com/o/quoteImgs%2FChrysanthemum.jpg?alt=media&token=a6ee2db3-cc7c-4507-afbb-eda7c6cf1785" alt="img">
+                    <img src=<%= imgs[3] %> alt="img">
                 </div>
                 <h3>How much information?</h3>
                 <p>You selected: <span><%= ans4 %></span></p>
@@ -115,14 +119,14 @@
         <div class="row">
             <div class="response">
                 <div class="option">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/quote-db5a2.appspot.com/o/quoteImgs%2FChrysanthemum.jpg?alt=media&token=a6ee2db3-cc7c-4507-afbb-eda7c6cf1785" alt="img">
+                    <img src=<%= imgs[4] %> alt="img">
                 </div>
                 <h3>Need help with content?</h3>
                 <p>You selected: <span><%= ans5 %></span></p>
             </div>
             <div class="response">
                 <div class="option">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/quote-db5a2.appspot.com/o/quoteImgs%2FChrysanthemum.jpg?alt=media&token=a6ee2db3-cc7c-4507-afbb-eda7c6cf1785" alt="img">
+                    <img src=<%= imgs[5] %> alt="img">
                 </div>
                 <h3>Integrations?</h3>
                 <p>You selected: <span><%= ans6 %></span></p>
@@ -130,7 +134,7 @@
         </div>
         <div class="response" style="margin: auto">
             <div class="option">
-                <img src="https://firebasestorage.googleapis.com/v0/b/quote-db5a2.appspot.com/o/quoteImgs%2FChrysanthemum.jpg?alt=media&token=a6ee2db3-cc7c-4507-afbb-eda7c6cf1785" alt="img">
+                <img src=<%= imgs[6] %> alt="img">
             </div>
             <h3>Hire SEO services?</h3>
             <p>You selected: <span><%= ans7 %></span></p>
@@ -153,6 +157,12 @@
         </div>
     </div>
     <footer>
+        <div class="row">
+            <a target="_blank" href="https://www.facebook.com/goconsulting.es"><img src="https://firebasestorage.googleapis.com/v0/b/quote-db5a2.appspot.com/o/quoteImgs%2Ffacebook.png?alt=media" alt=""></a>
+            <img src="https://firebasestorage.googleapis.com/v0/b/quote-db5a2.appspot.com/o/quoteImgs%2Fgoogle.png?alt=media" alt="">
+            <img src="https://firebasestorage.googleapis.com/v0/b/quote-db5a2.appspot.com/o/quoteImgs%2Flinkedin.png?alt=media" alt="">
+            <a target="_blank" href="https://twitter.com/goconsulting_es"><img src="https://firebasestorage.googleapis.com/v0/b/quote-db5a2.appspot.com/o/quoteImgs%2Ftweeter.png?alt=media" alt=""></a>
+        </div>
         <hr/>
         <p>Copyright © *|CURRENT_YEAR|* Go Consulting Europe, All rights reserved.</p>
         <p>Our mailing address is:</p>
