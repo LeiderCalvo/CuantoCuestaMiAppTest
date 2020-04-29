@@ -9,8 +9,8 @@ admin.initializeApp(functions.config().firebase);
 
 const app = express();
 app.use(cors({ origin: true }));
-
-/*Intento con zoho*/
+/*
+/*Intento con zoho
 var trans = nodemailer.createTransport({
     host: 'smtp.zoho.com',
     port: 465,
@@ -52,7 +52,7 @@ exports.sendEmailByZoho = functions.https.onRequest((req, res) => {
         return res.send('SendedByZoho');
     });
 });
-
+*/
 /*Funciona con gmail*/
 const email = new Email({
     message: {
@@ -139,7 +139,7 @@ app.put('/setUserActionBuy', (req, res) => {
     let id = obj.replace('@',''); id = id.replace('.','');
     admin.firestore().collection('requests').doc(`${id}`).update({action: true}).then(r => res.send('completed')).catch(err=> res.send(err) );
 });
-
+/*
 app.put('/updateUser', (req, res) => {
     const email = req.query.email,
         obj = JSON.parse(req.query.obj);
@@ -163,6 +163,6 @@ app.get('/getUserDocument', (req, res) => {
     } 
     ).catch(err=> res.send(err) );
 });
-
+*/
 // Expose Express API as a single Cloud Function:
 exports.widgets = functions.https.onRequest(app);

@@ -872,8 +872,8 @@
 
         beginWeb.onclick = ()=> {
             fetch(`https://us-central1-quote-db5a2.cloudfunctions.net/widgets/setUserActionBuy?email=${response[0]}`, {method: 'PUT'})
-            .then( resp => respuesta.text())
-            .catch( err => console.error(error) );
+            .then( resp => resp.text())
+            .catch( err => console.error(err) );
         };
 
         shareResult.onclick = ()=> {
